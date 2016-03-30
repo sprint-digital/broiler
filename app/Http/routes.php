@@ -16,7 +16,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/portal', 'HomeController@index');
     //Route::get('/portal/getDashboardData', 'DashboardController@index');
     Route::resource('/portal/dashboard', 'DashboardController');
-    Route::resource('/portal/user/edit', 'UserController@edit');
+    //Route::resource('/portal/user/edit', 'UserController@edit');
     Route::resource('/portal/user', 'UserController');
     //    Route::get('/portal/getDashboardData', function(){return 'test';});
 

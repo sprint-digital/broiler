@@ -5,8 +5,8 @@ myApp.factory('userModel', ['$http', function($http) {
         },
         updateUser: function(userData) {
             return $http({
-                method  : 'POST',
-                url     : baseUrl + 'portal/user/'+userData.id+'/update',
+                method  : 'PUT',
+                url     : baseUrl + 'portal/user/'+userData.id,
                 data    : userData,  // pass in data as strings
                 headers: {'Content-Type': 'application/json'},
                 });
