@@ -155,7 +155,15 @@ return [
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        GrahamCampbell\Exceptions\ExceptionsServiceProvider::class,
+        Zizaco\Entrust\EntrustServiceProvider::class,
+
+        /*
+         * Third Party / Extra Service Providers...
+         */
+        'Laravel\Cashier\CashierServiceProvider',
+        'Intervention\Image\ImageServiceProvider',
+        'Spatie\Backup\BackupServiceProvider'
+
 
     ],
 
@@ -202,6 +210,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
+        'Image' => 'Intervention\Image\Facades\Image',
 
     ],
 

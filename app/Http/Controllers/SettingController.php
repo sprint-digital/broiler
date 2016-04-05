@@ -6,25 +6,10 @@ use Illuminate\Http\Request;
 use Auth;
 use Response;
 use App\User;
+use App\Setting;
 
-class UserController extends Controller
+class SettingController extends Controller
 {
-    public function checkAuth(Request $request)
-    {
-        // setting the credentials array
-        $credentials = [
-            'email' => $request->input('email'),
-            'password' => $request->input('password'),
-        ];
-
-        //return $credentials;
-        //echo $request->input('email') . ' ' . $request->input('password');
-        // if the credentials are wrong
-        if (!Auth::attempt($credentials)) {
-            return response('Username password does not match', 403);
-        }
-        return response(Auth::user(), 201);
-    }
     /**
      * Display a listing of the resource.
      *
@@ -51,7 +36,10 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+        Setting::create($input);
+        $settingData = Setting::get();
+        return Response::json($settingData);
     }
     /**
      * Display the specified resource.
@@ -62,7 +50,8 @@ class UserController extends Controller
     public function show($id=null)
     {
         $user = Auth::user();
-        return Response::json($user);
+        $settingData = Setting::get();
+        return Response::json($settingData);
     }
     /**
      * Show the form for editing the specified resource.
@@ -83,10 +72,10 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $input = $request->all();
-        $userData=Auth::user();
-        $userData->fill($input);
-        $userData->save();
-        return Response::json($userData);
+        $settingData = Setting::find($id);
+        $settingData->fill($input);
+        $settingData->save();
+        return Response::json($settingData);
     }
     /**
      * Remove the specified resource from storage.

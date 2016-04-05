@@ -7,7 +7,12 @@
     "require": {
         "php": ">=5.5.9",
         "laravel/framework": "5.2.*",
-        "graham-campbell/exceptions": "^8.3"
+        "zizaco/entrust": "5.2.x-dev",
+        "stripe/stripe-php": "^3.6",
+        "intervention/image": "^2.3",
+        "guzzlehttp/guzzle": "~5.3|~6.0",
+        "spatie/laravel-backup": "^2.10",
+        "laravel/cashier-braintree": "~1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

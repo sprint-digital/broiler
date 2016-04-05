@@ -17,9 +17,11 @@ elixir(function(mix) {
     	'app.js'
 	], 'public/js/app.js');
     mix.scripts([
-    	'controllers/userController.js'
+    	'controllers/userController.js',
+        'controllers/settingController.js'
 	], 'public/js/controllers.js');
     mix.scripts([
-    	'models/userModel.js'
+    	'models/userModel.js',
+        'models/settingModel.js',
 	], 'public/js/models.js');
 });

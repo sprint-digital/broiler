@@ -13,7 +13,7 @@ myApp.config(['$routeProvider', '$locationProvider',
         });
         $routeProvider.when('/setting', {
             templateUrl: 'backend/setting.html',
-            controller: 'userController'
+            controller: 'settingController'
         });
 
         $routeProvider.otherwise('/dashboard');
