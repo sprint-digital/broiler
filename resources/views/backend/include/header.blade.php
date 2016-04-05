@@ -17,6 +17,7 @@
     <!-- Custom CSS -->
     <link href="{{ asset('css/sb-admin-2.css')}}" rel="stylesheet">
     <link href="{{ asset('bower_components/morrisjs/morris.css')}}" rel="stylesheet">
+    <link href="{{ asset('bower_components/angular-datatables/dist/css/angular-datatables.min.css')}}" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="{{ asset('bower_components/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">

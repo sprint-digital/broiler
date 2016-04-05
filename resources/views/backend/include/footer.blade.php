@@ -3,9 +3,11 @@
 
     <!-- JavaScripts -->
     <script type="text/javascript" src="{{asset('bower_components/jquery/dist/jquery.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('bower_components/datatables/media/js/jquery.dataTables.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>
 	@if (Request::path() == 'portal')
 	    <script type="text/javascript" src="{{asset('bower_components/angular/angular.min.js')}}"></script>
+        <script type="text/javascript" src="{{asset('bower_components/angular-datatables/dist/angular-datatables.min.js')}}"></script>
 	    <script type="text/javascript" src="{{asset('bower_components/angular-route/angular-route.min.js')}}"></script>
 	    <script type="text/javascript" src="{{asset('bower_components/angular-cookies/angular-cookies.min.js')}}"></script>
 	    <script type="text/javascript" src="{{asset('js/app.js')}}"></script>
