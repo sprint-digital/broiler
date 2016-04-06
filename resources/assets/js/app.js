@@ -15,7 +15,10 @@ myApp.config(['$routeProvider', '$locationProvider',
             templateUrl: 'backend/setting.html',
             controller: 'settingController'
         });
-
+        $routeProvider.when('/staticpages', {
+            templateUrl: 'backend/staticpages.html',
+            controller: 'staticpagesController'
+        });
         $routeProvider.otherwise('/dashboard');
 	}
 ]);

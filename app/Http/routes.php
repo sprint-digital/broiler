@@ -19,6 +19,7 @@ Route::group(['middleware' => 'web'], function () {
     //Route::resource('/portal/user/edit', 'UserController@edit');
     Route::resource('/portal/user', 'UserController');
     Route::resource('/portal/setting', 'SettingController');
+    Route::resource('/portal/staticpage', 'StaticpageController');
     //    Route::get('/portal/getDashboardData', function(){return 'test';});
 
 });

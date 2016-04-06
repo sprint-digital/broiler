@@ -36,6 +36,11 @@ class DatabaseSeeder extends Seeder
             ['key' => 'Braintree Private Key', 'value' => '38938f7ed30bda7b5bdbcd6d45d0049c'],
         ));
 
+        DB::table('staticpages')->insert(array(
+            ['sortid' => '1', 'content' => 'Broiler is a boilerplate design for integrating in laravel and angularjs.', 'title' => 'Home Page', 'slug' => 'homepage', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
+            ['sortid' => '2', 'content' => 'We are HallandCo. My name is Nhi and my boss is Michael.', 'title' => 'About Us', 'slug' => 'aboutus', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()]
+        ));
+
         $admin = new Role();
         $admin->name         = 'admin';
         $admin->display_name = 'User Administrator'; // optional
