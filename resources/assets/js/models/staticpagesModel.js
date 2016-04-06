@@ -1,13 +1,17 @@
 myApp.factory('staticpagesModel', ['$http', function($http) {
     return {
         getStaticpages: function() {
-            return $http.get(baseUrl + 'portal/staticpage/show');
+            return $http.get(baseUrl + 'portal/staticpage');
         },
-        updateStaticpages: function(staticpagesData) {
+        getStaticpage: function(staticPageId) {
+            console.log('in static page model - ' + staticPageId);
+            return $http.get(baseUrl + 'portal/staticpage/' + staticPageId );
+        },
+        updateStaticpages: function(staticpageData) {
             return $http({
                 method  : 'PUT',
-                url     : baseUrl + 'portal/staticpage/'+staticpagesData.id,
-                data    : staticpagesData,  // pass in data as strings
+                url     : baseUrl + 'portal/staticpage/'+staticpageData.id,
+                data    : staticpageData,  // pass in data as strings
                 headers: {'Content-Type': 'application/json'},
                 });
         },

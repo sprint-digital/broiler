@@ -19,6 +19,12 @@ myApp.config(['$routeProvider', '$locationProvider',
             templateUrl: 'backend/staticpages.html',
             controller: 'staticpagesController'
         });
+        $routeProvider.when('/staticpages/:id', {
+            templateUrl: 'backend/staticpages-single.html',
+            controller: 'staticpageController'
+        });
+
+
         $routeProvider.otherwise('/dashboard');
 	}
 ]);

@@ -38,7 +38,7 @@ class DatabaseSeeder extends Seeder
 
         DB::table('staticpages')->insert(array(
             ['sortid' => '1', 'content' => 'Broiler is a boilerplate design for integrating in laravel and angularjs.', 'title' => 'Home Page', 'slug' => 'homepage', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
-            ['sortid' => '2', 'content' => 'We are HallandCo. My name is Nhi and my boss is Michael.', 'title' => 'About Us', 'slug' => 'aboutus', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()]
+            ['sortid' => '2', 'content' => 'We are HallandCo. My name is Nhi and my boss is Michael.', 'title' => 'About Us', 'slug' => 'aboutus', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['sortid' => '3', 'content' => 'Find us at 555 Old Cleveland Road Camp Hill 4152 QLD <br> Or call 0424 150 090 <br> or email info@hallandco.digital', 'title' => 'Contact Us', 'slug' => 'contactus', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()]
         ));
 

@@ -17,7 +17,9 @@ class StaticpageController extends Controller
      */
     public function index()
     {
-        //
+        $user = Auth::user();
+        $staticpagesData = Staticpage::get();
+        return Response::json($staticpagesData);
     }
     /**
      * Show the form for creating a new resource.
@@ -47,11 +49,10 @@ class StaticpageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id=null)
+    public function show($id = null)
     {
-        $user = Auth::user();
-        $staticpagesData = Staticpage::get();
-        return Response::json($staticpagesData);
+        $staticpageData = Staticpage::find($id);
+        return Response::json($staticpageData);
     }
     /**
      * Show the form for editing the specified resource.
@@ -59,8 +60,10 @@ class StaticpageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request, $id = null)
+    public function edit($id = null)
     {
+        $staticpageData = Staticpage::find($id);
+        return Response::json($staticpageData);
     }
     /**
      * Update the specified resource in storage.
@@ -72,10 +75,10 @@ class StaticpageController extends Controller
     public function update(Request $request, $id)
     {
         $input = $request->all();
-        $settingData = Setting::find($id);
-        $settingData->fill($input);
-        $settingData->save();
-        return Response::json($settingData);
+        $staticpageData = Staticpage::find($id);
+        $staticpageData->fill($input);
+        $staticpageData->save();
+        return Response::json($staticpageData);
     }
     /**
      * Remove the specified resource from storage.
