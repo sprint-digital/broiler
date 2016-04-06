@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', ['ngRoute','ngCookies']);
+var myApp = angular.module('myApp', ['ngRoute','ngCookies','datatables', 'datatables.bootstrap' ,'ngResource']);
 
 
 myApp.config(['$routeProvider', '$locationProvider',
