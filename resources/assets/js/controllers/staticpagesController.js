@@ -1,7 +1,6 @@
 myApp.controller('staticpagesController', ['$scope', '$location', '$routeParams', 'staticpagesModel', 'DTOptionsBuilder', 'DTColumnBuilder',
     function($scope, $location, $routeParams, staticpagesModel, DTOptionsBuilder, DTColumnBuilder) {
         $scope.staticpagesDatas;
-        $scope.staticpageData;
         $scope.value;
         $scope.key;
         /*Getting all the staticpages*/
@@ -47,9 +46,7 @@ myApp.controller('staticpageController', ['$scope', '$routeParams','$location','
             });
         },
         createStaticpagesData: function(){
-            console.log('in staticpages controller');
             staticpagesModel.createStaticpages($scope.key,$scope.value).success(function(response) {
-                console.log('successs');
                 $scope.staticpageData = response;
             });
         }

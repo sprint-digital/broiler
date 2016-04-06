@@ -4,7 +4,6 @@ myApp.factory('staticpagesModel', ['$http', function($http) {
             return $http.get(baseUrl + 'portal/staticpage');
         },
         getStaticpage: function(staticPageId) {
-            console.log('in static page model - ' + staticPageId);
             return $http.get(baseUrl + 'portal/staticpage/' + staticPageId );
         },
         updateStaticpages: function(staticpageData) {
