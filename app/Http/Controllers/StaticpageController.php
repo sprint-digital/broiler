@@ -26,9 +26,9 @@ class StaticpageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+
     }
     /**
      * Store a newly created resource in storage.
@@ -39,9 +39,9 @@ class StaticpageController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
-        Staticpage::create($input);
-        $settingData = Staticpage::get();
-        return Response::json($settingData);
+        $input['sortid'] = Staticpage::max('sortid')+1;
+        $staticpageData = Staticpage::create($input);
+        return Response::json($staticpageData);
     }
     /**
      * Display the specified resource.

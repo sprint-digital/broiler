@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', ['ngRoute','ngCookies','datatables', 'datatables.bootstrap' ,'ngResource']);
+var myApp = angular.module('myApp', ['ngRoute','ngCookies','datatables', 'datatables.bootstrap' ,'ngResource', 'summernote']);
 
 
 myApp.config(['$routeProvider', '$locationProvider',
@@ -15,13 +15,14 @@ myApp.config(['$routeProvider', '$locationProvider',
             templateUrl: 'backend/setting.html',
             controller: 'settingController'
         });
-        $routeProvider.when('/staticpages', {
-            templateUrl: 'backend/staticpages.html',
-            controller: 'staticpagesController'
+        $routeProvider.when('/staticpage', {
+            templateUrl: 'backend/staticpage/staticpage-list.html'
         });
-        $routeProvider.when('/staticpages/:id', {
-            templateUrl: 'backend/staticpages-single.html',
-            controller: 'staticpageController'
+        $routeProvider.when('/staticpage/create', {
+            templateUrl: 'backend/staticpage/staticpage-create.html'
+        });
+        $routeProvider.when('/staticpage/:id', {
+            templateUrl: 'backend/staticpage/staticpage-single.html'
         });
 
 

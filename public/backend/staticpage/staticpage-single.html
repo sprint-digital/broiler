@@ -1,0 +1,54 @@
+<div ng-controller="singleStaticpageController">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">{{staticpageData.title}} Static Page</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+	{{staticpageData}}
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    {{staticpageData.title}} Details
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <form role="form" ng-submit="updateStaticpageData()">
+                                <div class="form-group">
+                                    <label>Title:</label>
+                                    <input class="form-control" name="title" placeholder="Enter text" ng-model="staticpageData.title">
+                                </div>
+                                <div class="form-group"> 
+                                    <label>Slug:</label>
+                                    <input class="form-control" name="slug" placeholder="Enter text" ng-model="staticpageData.slug">
+                                </div>
+                                <div class="form-group">
+                                    <label>Sort ID:</label>
+                                    <input class="form-control" name="sortid" type="number" ng-model="staticpageData.sortid">
+                                </div>
+                                <div class="form-group">
+                                    <label>Content:</label>
+                                    <summernote ng-model="staticpageData.content" height="300"></summernote> 
+                                </div> 
+
+                                <button type="submit" class="btn btn-default">Submit Button</button>
+                                <button type="reset" class="btn btn-default">Reset Button</button>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- /.row (nested) -->
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+
+
+</div

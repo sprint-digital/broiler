@@ -1,10 +1,10 @@
-myApp.controller('staticpagesController', ['$scope', '$location', '$routeParams', 'staticpagesModel', 'DTOptionsBuilder', 'DTColumnBuilder',
-    function($scope, $location, $routeParams, staticpagesModel, DTOptionsBuilder, DTColumnBuilder) {
+myApp.controller('listStaticpageController', ['$scope', '$location', '$routeParams', 'staticpageModel', 'DTOptionsBuilder', 'DTColumnBuilder',
+    function($scope, $location, $routeParams, staticpageModel, DTOptionsBuilder, DTColumnBuilder) {
         $scope.staticpagesDatas;
         $scope.value;
         $scope.key;
         /*Getting all the staticpages*/
-        staticpagesModel.getStaticpages().success(function(response) {
+        staticpageModel.getStaticpageList().success(function(response) {
             $scope.staticpagesDatas = response;
             //I don't know why I have to do this... seems so stupid...
             var deferred = $.Deferred()
@@ -25,31 +25,39 @@ myApp.controller('staticpagesController', ['$scope', '$location', '$routeParams'
         });
 
         function actionsHtml(data, type, full, meta) {
-            return '<a class="btn btn-warning" href="#/staticpages/'+data.id+'"><i class="fa fa-edit"></i></a>&nbsp;' +
+            return '<a class="btn btn-warning" href="#/staticpage/'+data.id+'"><i class="fa fa-edit"></i></a>&nbsp;' +
                 '<button class="btn btn-danger" ng-click=""><i class="fa fa-trash-o"></i></button>';
         }
     }
 ]);
 
-myApp.controller('staticpageController', ['$scope', '$routeParams','$location','staticpagesModel',
-  function($scope, $routeParams, $location, staticpagesModel) {
+myApp.controller('singleStaticpageController', ['$scope', '$routeParams','$location','staticpageModel',
+  function($scope, $routeParams, $location, staticpageModel) {
     $scope.pageid = $routeParams.id;
     $scope.staticpageData;
-    staticpagesModel.getStaticpage($scope.pageid).success(function(response) {
+    staticpageModel.getStaticpage($scope.pageid).success(function(response) {
         $scope.staticpageData = response;
     });
+
     // === Functions === //
     angular.extend($scope, {
         updateStaticpageData: function() {
-            staticpagesModel.updateStaticpages($scope.staticpageData).success(function(response) {
-                $scope.staticpageData = response;
-            });
-        },
-        createStaticpagesData: function(){
-            staticpagesModel.createStaticpages($scope.key,$scope.value).success(function(response) {
+            staticpageModel.updateStaticpage($scope.staticpageData).success(function(response) {
                 $scope.staticpageData = response;
             });
         }
     });
+}]);
 
+myApp.controller('createStaticpageController', ['$scope', '$routeParams','$location','staticpageModel',
+  function($scope, $routeParams, $location, staticpageModel) {
+    $scope.staticpageData = {'id':'','title':'','slug':'','sortid':'','content':''};
+    // === Functions === //
+    angular.extend($scope, {
+        createStaticpageData: function(){
+            staticpageModel.createStaticpage($scope.staticpageData).success(function(response) {
+                $location.path('/staticpage/'+response.id);
+            });
+        }
+    });
 }]);

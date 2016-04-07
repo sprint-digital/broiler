@@ -23,6 +23,7 @@
     <link href="{{ asset('css/dataTables.responsive.css')}}" rel="stylesheet">
 
     <link href="{{asset('bower_components/angular-datatables/dist/plugins/bootstrap/datatables.bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{asset('bower_components/summernote/dist/summernote.css')}}" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="{{ asset('bower_components/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
