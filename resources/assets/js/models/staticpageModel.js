@@ -21,6 +21,13 @@ myApp.factory('staticpageModel', ['$http', function($http) {
                 data    : staticpageData,  // pass in data as strings
                 headers: {'Content-Type': 'application/json'},
                 });
+        },
+        deleteStaticpage: function(staticPageId) {
+            return $http({
+                method  : 'DELETE',
+                url     : baseUrl + 'portal/staticpage/' + staticPageId,
+                headers: {'Content-Type': 'application/json'},
+                });
         }
     };
 }])

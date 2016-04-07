@@ -88,6 +88,8 @@ class StaticpageController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Staticpage::find($id)->delete();
+        $staticpagesData = Staticpage::get();
+        return Response::json($staticpagesData);
     }
 }
