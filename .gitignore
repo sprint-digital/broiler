@@ -13,3 +13,4 @@ storage/
 .env
 .env.example
 public/bower_components/
+sftp-config.json
