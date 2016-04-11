@@ -19,7 +19,7 @@ function listStaticpageControllerFnc($scope, $compile, DTOptionsBuilder, DTColum
         DTColumnBuilder.newColumn(null).withTitle('Actions').notSortable().renderWith(actionsHtml),
         DTColumnBuilder.newColumn('content').withTitle('Content').withClass('none')
     ];
-$scope.dtInstance = {};
+    $scope.dtInstance = {};
     $scope.deleteStaticpage = function(id){
         staticpageModel.deleteStaticpage(id).success(function(response) {
             $('#staticPageDatatable').DataTable().ajax.reload();//This part is stupid
@@ -59,6 +59,11 @@ myApp.controller('singleStaticpageController', ['$scope', '$routeParams','$locat
             staticpageModel.updateStaticpage($scope.staticpageData).success(function(response) {
                 $scope.staticpageData = response;
             });
+        },
+        deleteStaticpage: function(id){
+            staticpageModel.deleteStaticpage(id).success(function(response) {
+                $location.path( "/staticpage" );
+            });
         }
     });
 }]);
@@ -73,14 +78,5 @@ myApp.controller('createStaticpageController', ['$scope', '$routeParams','$locat
                 $location.path('/staticpage/'+response.id);
             });
         }
-    });
-}]);
-
-myApp.controller('deleteStaticpageController', ['$scope', '$routeParams','$location','staticpageModel','id',
-  function($scope, $routeParams, $location, staticpageModel, id) {
-    $scope.id = id;
-    // === Functions === //
-    angular.extend($scope, {
-
     });
 }]);

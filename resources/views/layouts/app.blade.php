@@ -14,6 +14,7 @@
     <!-- Styles -->
     <link href="{{ asset('bower_components/bootstrap/dist/css/bootstrap.min.css')}}" rel="stylesheet">
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
+   
 
     <!-- JS Variables -->
     <script>var baseUrl = "{{url('/')}}/"</script>

@@ -15,6 +15,7 @@
 	    <script type="text/javascript" src="{{asset('bower_components/angular-resource/angular-resource.min.js')}}"></script>
         <script type="text/javascript" src="{{asset('bower_components/angular-cookies/angular-cookies.min.js')}}"></script>
 	    <script type="text/javascript" src="{{asset('bower_components/angular-summernote/dist/angular-summernote.min.js')}}"></script>
+        <script type="text/javascript" src="{{asset('bower_components/angular-flash-alert/dist/angular-flash.min.js')}}"></script>
 	    <script type="text/javascript" src="{{asset('js/app.js')}}"></script>
 	    <script type="text/javascript" src="{{asset('js/models.js')}}"></script>
 	    <script type="text/javascript" src="{{asset('js/controllers.js')}}"></script>
