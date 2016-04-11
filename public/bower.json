@@ -29,6 +29,11 @@
     "morrisjs": "~0.5.1",
     "datatables-responsive": "~1.0.3",
     "bootstrap-social": "~4.8.0",
-    "flot.tooltip": "~0.8.4"
+    "flot.tooltip": "~0.8.4",
+    "angular-flash-alert": "^2.2.7",    
+    "angular-datatables": "^0.5.4",
+    "angular-resource": "^1.5.3",
+    "angular-summernote": "^0.8.1"
+
   }
 }
