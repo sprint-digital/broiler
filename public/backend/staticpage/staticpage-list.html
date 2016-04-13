@@ -10,6 +10,7 @@
     <hr style="margin-top: 0px;">
 
 	<div class="panel-body">
+        <flash-message duration="5000" show-close="true" on-dismiss="myCallback(flash)" ></flash-message>
 	    <div class="table-responsive" ng-if="dtOptions">
 	        <table id="staticPageDatatable" datatable="" dt-options="dtOptions" dt-columns="dtColumns" dt-instance="dtInstance" class="table table-striped table-bordered table-hover" style="width: 100% !important;"></table>
 	    </div>

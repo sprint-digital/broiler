@@ -41,7 +41,8 @@ class StaticpageController extends Controller
         $input = $request->all();
         $input['sortid'] = Staticpage::max('sortid')+1;
         $staticpageData = Staticpage::create($input);
-        return Response::json($staticpageData);
+        $staticpageData->toArray();
+        return Response::json(array('staticpageData'=>$staticpageData,'msgType'=>'success','msg'=>'Static Page has been successfully updated'));
     }
     /**
      * Display the specified resource.
@@ -78,7 +79,8 @@ class StaticpageController extends Controller
         $staticpageData = Staticpage::find($id);
         $staticpageData->fill($input);
         $staticpageData->save();
-        return Response::json($staticpageData);
+        $staticpageData->toArray();
+        return Response::json(array('staticpageData'=>$staticpageData,'msgType'=>'success','msg'=>'Static Page has been successfully updated'));
     }
     /**
      * Remove the specified resource from storage.
@@ -89,7 +91,7 @@ class StaticpageController extends Controller
     public function destroy($id)
     {
         Staticpage::find($id)->delete();
-        $staticpagesData = Staticpage::get();
-        return Response::json($staticpagesData);
+        $staticpagesData = Staticpage::get()->toArray();
+        return Response::json(array('staticpagesData'=>$staticpagesData,'msgType'=>'danger','msg'=>'Static Page has been successfully deleted'));
     }
 }

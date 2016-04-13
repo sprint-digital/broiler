@@ -2,13 +2,12 @@
     <br>
     <div class="row">
         <div class="col-lg-12">
-            <p><a href="#/staticpage">Static Pages</a> > {{staticpageData.title}}</p>
+            <p><a href="#/staticpage">Static Pages</a> / {{staticpageData.title}}</p>
         </div>
         <!-- /.col-lg-12 -->
     </div>
     <!-- /.row -->
     
-
     <div class="row">
         <div class="col-xs-6">
             <h3 class="page-header pull-left" style="border-bottom: none; margin-bottom:-10px;">{{staticpageData.title}}</h3>
@@ -18,10 +17,9 @@
     <!-- /.row -->
     <hr style="margin-top: 0px;">
 
-	{{staticpageData}}
-
     <div class="row">
         <div class="col-lg-12">
+            <flash-message duration="5000" show-close="true" on-dismiss="myCallback(flash)" ></flash-message>
             <div class="panel panel-default">
                 <div class="panel-heading">
                     {{staticpageData.title}} Details
