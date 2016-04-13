@@ -12,7 +12,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('bower_components/bootstrap/dist/css/bootstrap.min.css')}}" rel="stylesheet">
-    {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link href="{{ asset('css/sb-admin-2.css')}}" rel="stylesheet">

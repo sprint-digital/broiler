@@ -27,25 +27,27 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-lg-12">
-                            <form role="form" ng-submit="updateStaticpageData()">
-                                <div class="form-group">
+                            <form name="updateStaticPageForm" role="form" ng-submit="updateStaticpageData()" novalidate>
+                                <div class="form-group" ng-class="{ 'has-error' : updateStaticPageForm.title.$invalid && !updateStaticPageForm.title.$pristine }">
                                     <label>Title:</label>
-                                    <input class="form-control" name="title" placeholder="Enter text" ng-model="staticpageData.title">
+                                    <input class="form-control" name="title" placeholder="Enter text" ng-model="staticpageData.title" required>
+                                    <p ng-show="updateStaticPageForm.title.$invalid && !updateStaticPageForm.title.$pristine" class="help-block">Static Page title is required.</p>
                                 </div>
                                 <div class="form-group"> 
                                     <label>Slug:</label>
-                                    <input class="form-control" name="slug" placeholder="Enter text" ng-model="staticpageData.slug">
+                                    <input class="form-control" name="slug" placeholder="Enter text" ng-model="staticpageData.slug" disabled>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group" ng-class="{ 'has-error' : updateStaticPageForm.sortid.$invalid && !updateStaticPageForm.sortid.$pristine }">
                                     <label>Sort ID:</label>
-                                    <input class="form-control" name="sortid" type="number" ng-model="staticpageData.sortid">
+                                    <input class="form-control" name="sortid" type="number" ng-model="staticpageData.sortid" required>
+                                    <p ng-show="updateStaticPageForm.sortid.$invalid && !updateStaticPageForm.sortid.$pristine" class="help-block">Static Page sort id is required.</p>
                                 </div>
                                 <div class="form-group">
                                     <label>Content:</label>
                                     <summernote ng-model="staticpageData.content" height="300"></summernote> 
                                 </div> 
 
-                                <button type="submit" class="btn btn-success">Submit Button</button>
+                                <button type="submit" class="btn btn-success" ng-disabled="updateStaticPageForm.$invalid">Submit Button</button>
                                 <button type="reset" class="btn btn-default">Reset Button</button>
                             </form>
                         </div>

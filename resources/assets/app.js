@@ -1,0 +1,1 @@
+var mpApp = angular.module('myApp', []);

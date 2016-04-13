@@ -82,10 +82,12 @@ myApp.controller('createStaticpageController', ['$scope', '$routeParams','$locat
     // === Functions === //
     angular.extend($scope, {
         createStaticpageData: function(){
-            staticpageModel.createStaticpage($scope.staticpageData).success(function(response) {
-                $location.path('/staticpage/'+response.staticpageData.id);
-                Flash.create(response.msgType, response.msg);
-            });
+            if ($scope.createStaticPageForm.$valid) {
+                staticpageModel.createStaticpage($scope.staticpageData).success(function(response) {
+                    $location.path('/staticpage/'+response.staticpageData.id);
+                    Flash.create(response.msgType, response.msg);
+                });
+            }
         }
     });
 }]);

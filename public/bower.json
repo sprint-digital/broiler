@@ -30,10 +30,11 @@
     "datatables-responsive": "~1.0.3",
     "bootstrap-social": "~4.8.0",
     "flot.tooltip": "~0.8.4",
-    "angular-flash-alert": "^2.2.7",    
+    "angular-flash-alert": "^2.2.7",
     "angular-datatables": "^0.5.4",
     "angular-resource": "^1.5.3",
-    "angular-summernote": "^0.8.1"
-
+    "angular-summernote": "^0.8.1",
+    "angular-bootstrap-show-errors": "^2.3.0",
+    "bootstrap-validator": "git://github.com/1000hz/bootstrap-validator.git#^0.10.2"
   }
 }

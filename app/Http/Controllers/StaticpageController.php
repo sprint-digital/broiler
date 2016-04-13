@@ -40,9 +40,10 @@ class StaticpageController extends Controller
     {
         $input = $request->all();
         $input['sortid'] = Staticpage::max('sortid')+1;
+        $input['slug'] = strtolower(preg_replace('/\s*/', '',  $input['title']));
         $staticpageData = Staticpage::create($input);
         $staticpageData->toArray();
-        return Response::json(array('staticpageData'=>$staticpageData,'msgType'=>'success','msg'=>'Static Page has been successfully updated'));
+        return Response::json(array('staticpageData'=>$staticpageData,'msgType'=>'success','msg'=>'Static Page has been successfully created'));
     }
     /**
      * Display the specified resource.
@@ -77,6 +78,7 @@ class StaticpageController extends Controller
     {
         $input = $request->all();
         $staticpageData = Staticpage::find($id);
+        $input['slug'] = strtolower(preg_replace('/\s*/', '',  $input['title']));
         $staticpageData->fill($input);
         $staticpageData->save();
         $staticpageData->toArray();

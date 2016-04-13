@@ -14,7 +14,6 @@
         <!-- /.col-lg-12 -->
     </div>
     <!-- /.row -->
-	{{staticpageData}}
 
     <div class="row">
         <div class="col-lg-12">
@@ -25,21 +24,18 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-lg-12">
-                            <form role="form" ng-submit="createStaticpageData()">
-                                <div class="form-group">
+                            <form name="createStaticPageForm" role="form" ng-submit="createStaticpageData()" novalidate>
+                                <div class="form-group" ng-class="{ 'has-error' : createStaticPageForm.title.$invalid && !createStaticPageForm.title.$pristine }" >
                                     <label>Title:</label>
-                                    <input class="form-control" name="title" placeholder="Enter text" ng-model="staticpageData.title">
-                                </div>
-                                <div class="form-group"> 
-                                    <label>Slug:</label>
-                                    <input class="form-control" name="slug" placeholder="Enter text" ng-model="staticpageData.slug">
+                                    <input class="form-control" name="title" placeholder="Enter text" ng-model="staticpageData.title" required>
+                                    <p ng-show="createStaticPageForm.title.$invalid && !createStaticPageForm.title.$pristine" class="help-block">Static Page title is required.</p>
                                 </div>
                                 <div class="form-group">
                                     <label>Content:</label>
-                                    <summernote ng-model="staticpageData.content" height="300"></summernote> 
+                                    <summernote ng-model="staticpageData.content" name="content" height="300" require></summernote>
                                 </div> 
 
-                                <button type="submit" class="btn btn-success">Create Page</button>
+                                <button type="submit" class="btn btn-success" ng-disabled="createStaticPageForm.$invalid">Create Page</button>
                                 <button type="reset" class="btn btn-default">Reset</button>
                             </form>
                         </div>
