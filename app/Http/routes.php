@@ -20,6 +20,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::resource('/portal/user', 'UserController');
     Route::resource('/portal/setting', 'SettingController');
     Route::resource('/portal/staticpage', 'StaticpageController');
+    Route::resource('/portal/blog', 'BlogController');
     //    Route::get('/portal/getDashboardData', function(){return 'test';});
 
 });

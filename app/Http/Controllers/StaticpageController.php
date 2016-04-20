@@ -11,12 +11,22 @@ use App\Staticpage;
 class StaticpageController extends Controller
 {
     /**
+     * Call in the middleware to be used in this Controller
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
+        if (!$this->checkUser()){
+            return Response::json(array('accessDenied'=>'true','msgType'=>'danger','msg'=>'Sorry, you do not have permission. Please contact the website administrator or owner to resolve this issue.'));
+        };
         $user = Auth::user();
         $staticpagesData = Staticpage::get();
         return Response::json($staticpagesData);
@@ -53,20 +63,13 @@ class StaticpageController extends Controller
      */
     public function show($id = null)
     {
+        if (!$this->checkUser()){
+            return Response::json(array('accessDenied'=>'true','msgType'=>'danger','msg'=>'Sorry, you do not have permission. Please contact the website administrator or owner to resolve this issue.'));
+        };
         $staticpageData = Staticpage::find($id);
         return Response::json($staticpageData);
     }
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id = null)
-    {
-        $staticpageData = Staticpage::find($id);
-        return Response::json($staticpageData);
-    }
+
     /**
      * Update the specified resource in storage.
      *
@@ -96,4 +99,18 @@ class StaticpageController extends Controller
         $staticpagesData = Staticpage::get()->toArray();
         return Response::json(array('staticpagesData'=>$staticpagesData,'msgType'=>'danger','msg'=>'Static Page has been successfully deleted'));
     }
+    /**
+     * Middleware function 
+     *
+     * @param  none
+     * @return Json message or continue
+     */
+    public function checkUser()
+    {
+        $user = Auth::user();
+        if (!$user->hasRole(['owner', 'admin', 'staff'])){
+            return false;
+        }
+        return true;
+    } 
 }

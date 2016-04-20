@@ -1,6 +1,6 @@
 // @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+// Broiler Master SCSS File
+@import 'bootstrap-material-design';
+@import 'broiler-sb-admin2';
+@import '_datatables';
 
-$primaryColor: #eeffcc;
-h1 {
-    background: $primaryColor;
-}

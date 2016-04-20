@@ -1,13 +1,20 @@
 'use strict';
 myApp.controller('listStaticpageController', listStaticpageControllerFnc);
 
-function listStaticpageControllerFnc($scope, $compile, DTOptionsBuilder, DTColumnBuilder, staticpageModel, Flash) {
+function listStaticpageControllerFnc($scope, $location, $compile, DTOptionsBuilder, DTColumnBuilder, staticpageModel, Flash) {
     $scope.deleteID;
     $scope.deleteStaticPageData;
     $scope.openDeleteModal = openDeleteModal;
     $scope.msg;
     $scope.msgType;
     $scope.msgShow;
+
+    staticpageModel.getStaticpageList().success(function(response) {
+        if (response.accessDenied == 'true') {
+            $location.path('/dashboard');
+            Flash.create(response.msgType, response.msg);
+        }
+    });
 
     $scope.dtOptions = DTOptionsBuilder.fromSource(baseUrl + 'portal/staticpage')
         .withPaginationType('full_numbers').withOption('createdRow', createdRow)
@@ -17,7 +24,7 @@ function listStaticpageControllerFnc($scope, $compile, DTOptionsBuilder, DTColum
         DTColumnBuilder.newColumn('title').withTitle('Title'),
         DTColumnBuilder.newColumn('slug').withTitle('Slug'),
         DTColumnBuilder.newColumn('sortid').withTitle('Sort #'),
-        DTColumnBuilder.newColumn(null).withTitle('Actions').notSortable().renderWith(actionsHtml),
+        DTColumnBuilder.newColumn(null).withTitle('Actions').notSortable().renderWith(actionsHtml).withClass('text-center btn-group-sm'),
         DTColumnBuilder.newColumn('content').withTitle('Content').withClass('none')
     ];
     $scope.dtInstance = {};
@@ -43,9 +50,9 @@ function listStaticpageControllerFnc($scope, $compile, DTOptionsBuilder, DTColum
         $compile(angular.element(row).contents())($scope);
     }
     function actionsHtml(data, type, full, meta) {
-            return '<a class="btn btn-warning" href="#/staticpage/'+data.id+'"><i class="fa fa-edit"></i></a>&nbsp;' +
-            '<button class="btn btn-danger" data-toggle="modal" data-target="#staticpageDeleteModal" ng-click="openDeleteModal('+data.id+')">' +
-            '   <i class="fa fa-trash-o"></i>' +
+            return '<a class="btn btn-primary btn-fab" href="#/staticpage/'+data.id+'"><i class="material-icons md-24">mode_edit</i></a>&nbsp;' +
+            '<button class="btn btn-danger btn-fab" data-toggle="modal" data-target="#staticpageDeleteModal" ng-click="openDeleteModal('+data.id+')">' +
+            '   <i class="material-icons md-24">delete</i>' +
             '</button>';
     }
 }
@@ -55,6 +62,10 @@ myApp.controller('singleStaticpageController', ['$scope', '$routeParams','$locat
     $scope.pageid = $routeParams.id;
     $scope.staticpageData;
     staticpageModel.getStaticpage($scope.pageid).success(function(response) {
+        if (response.accessDenied == 'true') {
+            $location.path('/dashboard');
+            Flash.create(response.msgType, response.msg);
+        }
         $scope.staticpageData = response;
     });
 

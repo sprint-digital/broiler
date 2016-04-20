@@ -6,14 +6,15 @@
                     <!-- insert pic -->
                 </li>
                 <li>
-                    <a href="#/dashboard"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                    <a href="#/dashboard"><i class="material-icons">dashboard</i> Dashboard</a>
                 </li>
                 <li>
-                    <a href="#/gallery"><i class="fa fa-photo fa-fw"></i> Gallery</a>
+                    <a href="#/gallery"><i class="material-icons">image</i> Gallery</a>
                 </li>
                 <li>
-                    <a href="#/staticpage"><i class="fa fa-file-code-o fa-fw"></i> Static Pages</a>
+                    <a href="#/staticpage"><i class="material-icons">public</i> Web Pages</a>
                 </li>
+                <!-- account and settings only accessible from top nav right dropdown menu
                 <li class="">
                     <a href="#"><i class="fa fa-user fa-fw"></i> Profile<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
@@ -25,7 +26,7 @@
                         </li>
                     </ul>
                     <!-- /.nav-second-level -->
-                </li>
+                </li>-->
             </ul>
         </div>
         <!-- /.sidebar-collapse -->

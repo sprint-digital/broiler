@@ -1,6 +1,6 @@
-myApp.controller('dashboardController', ['$scope', '$location', 'dashboardModel',
-    function($scope, $location, dashboardModel) {
-
+myApp.controller('dashboardController', ['$scope', '$location', 'dashboardModel', 'Flash',
+    function($scope, $location, dashboardModel, Flash) {
+    	$scope.test = 'testings';
         /*Getting all the galleries*/
         // dashboardModel.getDashboard().success(function(response) {
         //     $scope.dashboardData = response;

@@ -1,0 +1,49 @@
+// This file is custom SCSS for datatables and responsive datatables
+
+//
+// Modals
+// Material Design element Dialogs
+// --------------------------------------------------
+#staticPageDatatable_length select{
+  margin-bottom:0px;
+}
+
+#staticPageDatatable_length{
+  margin-top:5px;
+}
+
+table.dataTable.dtr-inline.collapsed tbody td:first-child:before,
+table.dataTable.dtr-inline.collapsed tbody th:first-child:before {
+  left: 4px;
+  font-family: 'Material Icons';
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "liga" 1;
+  font-style: normal;
+  text-transform: none;
+  line-height: 1;
+  font-size: 20px;
+  width: 24px;
+  height: 24px;
+  display: block;
+  position: absolute;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  content: 'add_circle_outline';
+  color: #009688;
+}
+
+table.dataTable.dtr-inline.collapsed tbody td{
+  vertical-align: middle;
+}
+
+@media screen and (max-width: 767px){
+  .table-responsive {
+      border:0px;
+  }
+  .pagination .first, .pagination .last{
+    display:none;
+  }
+}
+
+
+

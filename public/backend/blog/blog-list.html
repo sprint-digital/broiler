@@ -1,0 +1,38 @@
+<div ng-controller="listBlogController">
+    <br>
+    <div class="row">
+        <div class="col-xs-6">
+            <h2 class="page-header pull-left" style="border-bottom: none; margin-bottom:-10px;">Public Web Pages</h2>
+        </div>
+        <div class="col-xs-6"><a class="page-header btn btn-success  m-b-5 pull-right" href="#/blog/create"><i class="fa fa-plus"></i></a></div>
+    </div>
+    <!-- /.row -->
+    <hr style="margin-top: 0px;">
+
+	<div class="panel-body">
+        <flash-message duration="5000" show-close="true" on-dismiss="myCallback(flash)" ></flash-message>
+	    <div class="table-responsive" ng-if="dtOptions">
+	        <table id="blogDatatable" datatable="" dt-options="dtOptions" dt-columns="dtColumns" dt-instance="dtInstance" class="table table-striped table-hover" style="width: 100% !important;"></table>
+	    </div>
+	</div>
+
+
+    <div class="modal fade" tabindex="-1" role="dialog" id="blogDeleteModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Delete Modal</h4>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete Blog Post "{{deleteBlogData.title}}"</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" ng-click="deleteBlog(deleteID)" class="btn btn-danger">Delete Blog Post</button>
+            </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+</div>
