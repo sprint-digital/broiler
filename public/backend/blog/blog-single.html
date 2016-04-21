@@ -30,17 +30,17 @@
                             <form name="updateBlogForm" role="form" ng-submit="updateBlogData()" novalidate>
                                 <div class="form-group" ng-class="{ 'has-error' : updateBlogForm.title.$invalid && !updateBlogForm.title.$pristine }">
                                     <label>Title:</label>
-                                    <input class="form-control" name="title" placeholder="Enter text" ng-model="blogData.title" required>
-                                    <p ng-show="updateBlogForm.title.$invalid && !updateBlogForm.title.$pristine" class="help-block">Blog Post title is required.</p>
+                                    <input class="form-control" type="text" name="title" placeholder="Enter text" ng-model="blogData.title" required>
+                                    <p ng-show="updateBlogForm.title.$invalid" class="help-block">Blog Post title is required.</p>
                                 </div>
-                                <div class="form-group"> 
-                                    <label>Slug:</label>
-                                    <input class="form-control" name="slug" placeholder="Enter text" ng-model="blogData.slug" disabled>
+                                <div class="form-group" ng-class="{ 'has-error' : updateBlogForm.author.$invalid && !updateBlogForm.author.$pristine }"> 
+                                    <label>Author:</label>
+                                    <input class="form-control" type="text" name="author" placeholder="Enter text" ng-model="blogData.author" required>
+                                    <p ng-show="updateBlogForm.author.$invalid && !updateBlogForm.author.$pristine" class="help-block">Blog Post auth is required.</p>
                                 </div>
-                                <div class="form-group" ng-class="{ 'has-error' : updateBlogForm.sortid.$invalid && !updateBlogForm.sortid.$pristine }">
-                                    <label>Sort ID:</label>
-                                    <input class="form-control" name="sortid" type="number" ng-model="blogData.sortid" required>
-                                    <p ng-show="updateBlogForm.sortid.$invalid && !updateBlogForm.sortid.$pristine" class="help-block">Blog Post sort id is required.</p>
+                                <div class="form-group">
+                                    <label>Author Bio:</label>
+                                    <textarea class="form-control" name="author_bio" type="text" required>{{blogData.author_bio}}</textarea>
                                 </div>
                                 <div class="form-group">
                                     <label>Content:</label>

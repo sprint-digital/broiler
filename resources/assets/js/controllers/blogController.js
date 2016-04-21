@@ -22,10 +22,11 @@ function listBlogControllerFnc($scope, $location, $compile, DTOptionsBuilder, DT
     $scope.dtColumns = [
         DTColumnBuilder.newColumn('id').withTitle('ID'),
         DTColumnBuilder.newColumn('title').withTitle('Title'),
-        DTColumnBuilder.newColumn('slug').withTitle('Slug'),
-        DTColumnBuilder.newColumn('sortid').withTitle('Sort #'),
+        DTColumnBuilder.newColumn('author').withTitle('Author'),
         DTColumnBuilder.newColumn(null).withTitle('Actions').notSortable().renderWith(actionsHtml).withClass('text-center btn-group-sm'),
+        DTColumnBuilder.newColumn('author_bio').withTitle('Author Bio').withClass('none'),
         DTColumnBuilder.newColumn('content').withTitle('Content').withClass('none')
+        
     ];
     $scope.dtInstance = {};
     $scope.deleteBlog = function(id){
@@ -69,13 +70,15 @@ myApp.controller('singleBlogController', ['$scope', '$routeParams','$location','
         $scope.blogData = response;
     });
 
-    // === Functions === //
+    // === Functions === // 
     angular.extend($scope, {
         updateBlogData: function() {
-            blogModel.updateBlog($scope.blogData).success(function(response) {
-                $scope.blogData = response.blogData;
-                Flash.create(response.msgType, response.msg);
-            });
+            if ($scope.updateBlogForm.$valid) {
+                blogModel.updateBlog($scope.blogData).success(function(response) {
+                    $scope.blogData = response.blogData;
+                    Flash.create(response.msgType, response.msg);
+                });
+            }
         },
         deleteBlog: function(id){
             blogModel.deleteBlog(id).success(function(response) {
@@ -89,7 +92,7 @@ myApp.controller('singleBlogController', ['$scope', '$routeParams','$location','
 
 myApp.controller('createBlogController', ['$scope', '$routeParams','$location','blogModel','Flash',
   function($scope, $routeParams, $location, blogModel,Flash) {
-    $scope.blogData = {'id':'','title':'','slug':'','sortid':'','content':''};
+    $scope.blogData = {'id':'','title':'','content':'','author':'','author_bio':''};
     // === Functions === //
     angular.extend($scope, {
         createBlogData: function(){

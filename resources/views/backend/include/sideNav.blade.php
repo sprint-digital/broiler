@@ -14,6 +14,9 @@
                 <li>
                     <a href="#/staticpage"><i class="material-icons">public</i> Web Pages</a>
                 </li>
+                <li>
+                    <a href="#/blog"><i class="material-icons">forum</i> Blog Posts</a>
+                </li>
                 <!-- account and settings only accessible from top nav right dropdown menu
                 <li class="">
                     <a href="#"><i class="fa fa-user fa-fw"></i> Profile<span class="fa arrow"></span></a>

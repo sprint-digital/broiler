@@ -49,8 +49,8 @@ class BlogController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
-        $input['sortid'] = Blogpost::max('sortid')+1;
-        $input['slug'] = strtolower(preg_replace('/\s*/', '',  $input['title']));
+        //$input['sortid'] = Blogpost::max('sortid')+1;
+        //$input['slug'] = strtolower(preg_replace('/\s*/', '',  $input['title']));
         $blogData = Blogpost::create($input);
         $blogData->toArray();
         return Response::json(array('blogData'=>$blogData,'msgType'=>'success','msg'=>'Static Page has been successfully created'));
