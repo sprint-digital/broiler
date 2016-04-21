@@ -18,7 +18,13 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-lg-12">
-                            <form role="form" ng-submit="updateCoreSettingData()">
+                            <div class="form-group" style="margin-top: 0;">
+                                <label>Application Logo:</label>
+                                <button class="btn btn-raised btn-primary" ngf-select="uploadFiles($files, $invalidFiles)" accept="image/*" ngf-max-height="1000" ngf-max-size="1MB">Update Logo</button>
+                                <img ng-src="{{imageUrl}}" alt="Logo" style="width:100%;border: 1px solid #D2D2D2;"/>
+                            </div>
+                            <hr>
+                            <form name="coreSettingForm" role="form" ng-submit="updateCoreSettingData()">
                                 <div class="form-group" ng-repeat="coreSetting in settingCoreDatas">
                                     <label>{{coreSetting.key}}</label>
                                     <input class="form-control" name="{{coreSetting.id}}" placeholder="Enter text" ng-model="coreSetting.value">

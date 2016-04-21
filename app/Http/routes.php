@@ -21,6 +21,7 @@ Route::group(['middleware' => 'web'], function () {
     // === Setting works a little differently === //
     Route::put('/portal/setting', 'SettingController@update');
     Route::resource('/portal/setting', 'SettingController');
+    Route::post('/portal/coreSetting/updateLogo', 'CoreSettingController@updateLogo');
     Route::put('/portal/coreSetting', 'CoreSettingController@update');
     Route::resource('/portal/coreSetting', 'CoreSettingController');
 

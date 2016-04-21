@@ -91,4 +91,14 @@ class CoreSettingController extends Controller
         $coreSettingDatas = CoreSetting::get()->toArray();
         return Response::json(array('coreSettingDatas'=>$coreSettingDatas,'msgType'=>'danger','msg'=>'CoreSetting has been successfully deleted'));
     }
+    /**
+     * Update Logo in public folder
+     *
+     * @param  \Illuminate\Http\Request  $request
+     */
+    public function updateLogo(Request $request) {
+        $file = $request->file('file');
+        \Image::make($request->file('file'))->encode('png',80)->save(public_path().'/img/logo.png');
+        return Response::json(array('msgType'=>'success','msg'=>'Logo has been successfully Updated'));
+    }
 }
