@@ -40,6 +40,16 @@ class DatabaseSeeder extends Seeder
             ['key' => 'Braintree Private Key', 'value' => '38938f7ed30bda7b5bdbcd6d45d0049c'],
         ));
 
+        DB::table('coreSettings')->insert(array(
+            ['key' => 'Application Name', 'value' => 'Broiler'],
+            ['key' => 'Owner\'s Name', 'value' => 'Michael Hall'],
+            ['key' => 'Company Name', 'value' => 'HallandCo'],
+            ['key' => 'Address', 'value' => '555 Old Cleveland Road Camp Hill 4152 QLD'],
+            ['key' => 'Phone', 'value' => '0424 150 090'],
+            ['key' => 'Email', 'value' => 'info@hallandco.digital'],
+            ['key' => 'Logo', 'value' => 'img/logo.png'],
+        ));
+
         DB::table('staticpages')->insert(array(
             ['sortid' => '1', 'content' => 'Broiler is a boilerplate design for integrating in laravel and angularjs.', 'title' => 'Home Page', 'slug' => 'homepage', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],
             ['sortid' => '2', 'content' => 'We are HallandCo. My name is Nhi and my boss is Michael.', 'title' => 'About Us', 'slug' => 'aboutus', 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()],

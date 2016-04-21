@@ -6,9 +6,9 @@ use Illuminate\Http\Request;
 use Auth;
 use Response;
 use App\User;
-use App\Setting;
+use App\CoreSetting;
 
-class SettingController extends Controller
+class CoreSettingController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,8 +18,8 @@ class SettingController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $settingData = Setting::get();
-        return Response::json($settingData);
+        $coreSettingData = CoreSetting::get();
+        return Response::json($coreSettingData);
     }
     /**
      * Show the form for creating a new resource.
@@ -39,8 +39,8 @@ class SettingController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
-        Setting::create($input);
-        return Response::json(array('settingDatas'=>Setting::get(),'msgType'=>'success','msg'=>'Application Setting was successfully Created.'));
+        CoreSetting::create($input);
+        return Response::json(array('coreSettingDatas'=>CoreSetting::get(),'msgType'=>'success','msg'=>'Application CoreSetting was successfully Created.'));
     }
     /**
      * Display the specified resource.
@@ -50,8 +50,8 @@ class SettingController extends Controller
      */
     public function show($id=null)
     {
-        $settingData = Setting::find($id);
-        return Response::json($settingData);
+        $coreSettingData = CoreSetting::find($id);
+        return Response::json($coreSettingData);
     }
     /**
      * Show the form for editing the specified resource.
@@ -73,11 +73,11 @@ class SettingController extends Controller
     {
         $inputs = $request->all();
         foreach ($inputs as $input){
-            $settingData = Setting::find($input['id']);
-            $settingData->fill($input);
-            $settingData->save();
+            $coreSettingData = CoreSetting::find($input['id']);
+            $coreSettingData->fill($input);
+            $coreSettingData->save();
         }
-        return Response::json(array('settingDatas'=>Setting::get(),'msgType'=>'success','msg'=>'Application Settings were successfully Updated.'));
+        return Response::json(array('coreSettingDatas'=>CoreSetting::get(),'msgType'=>'success','msg'=>'Application CoreSettings were successfully Updated.'));
     }
     /**
      * Remove the specified resource from storage.
@@ -87,8 +87,8 @@ class SettingController extends Controller
      */
     public function destroy($id)
     {
-        Setting::find($id)->delete();
-        $settingDatas = Setting::get()->toArray();
-        return Response::json(array('settingDatas'=>$settingDatas,'msgType'=>'danger','msg'=>'Setting has been successfully deleted'));
+        CoreSetting::find($id)->delete();
+        $coreSettingDatas = CoreSetting::get()->toArray();
+        return Response::json(array('coreSettingDatas'=>$coreSettingDatas,'msgType'=>'danger','msg'=>'CoreSetting has been successfully deleted'));
     }
 }

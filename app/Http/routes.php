@@ -18,10 +18,15 @@ Route::group(['middleware' => 'web'], function () {
     Route::resource('/portal/dashboard', 'DashboardController');
     //Route::resource('/portal/user/edit', 'UserController@edit');
     Route::resource('/portal/user', 'UserController');
+    // === Setting works a little differently === //
+    Route::put('/portal/setting', 'SettingController@update');
     Route::resource('/portal/setting', 'SettingController');
+    Route::put('/portal/coreSetting', 'CoreSettingController@update');
+    Route::resource('/portal/coreSetting', 'CoreSettingController');
+
+
     Route::resource('/portal/staticpage', 'StaticpageController');
     Route::resource('/portal/blog', 'BlogController');
-    //    Route::get('/portal/getDashboardData', function(){return 'test';});
 
 });
 // Route::get('/', function () {usu

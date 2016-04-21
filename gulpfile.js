@@ -20,12 +20,14 @@ elixir(function(mix) {
         'controllers/dashboardController.js',
     	'controllers/userController.js',
         'controllers/settingController.js',
+        'controllers/blogController.js',
         'controllers/staticpageController.js'
 	], 'public/js/controllers.js');
     mix.scripts([
         'models/dashboardModel.js',
     	'models/userModel.js',
         'models/settingModel.js',
+        'models/blogModel.js',
         'models/staticpageModel.js'
 	], 'public/js/models.js');
 });
