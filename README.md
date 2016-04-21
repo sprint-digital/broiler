@@ -12,7 +12,7 @@ Broiler is a Laravel Angular application boilerplate. Built on the solid Laravel
 * Built in Chat - WIP
 
 ## More Information
-For screenshots, general information and enquiries about Broiler please head over to https://hallandco.digital/our-platform.
+For screenshots, general information and enquiries about Broiler please head over to http://hallandco.digital/our-platform.
 
 ## Prerequisites
 Broiler will require the following 3rd party accounts for all functionality, the API keys and settings for these are set in the .env (OR application settings TBC):
