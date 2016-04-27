@@ -10,20 +10,19 @@
     
     <div class="row">
         <div class="col-xs-6">
-            <h3 class="page-header pull-left" style="border-bottom: none; margin-bottom:0px;">{{staticpageData.title}}</h3>
+            <h3 class="page-header pull-left" style="border-bottom: none; margin-bottom:10px;">{{staticpageData.title}}</h3>
         </div>
         <div class="col-xs-6 btn-group-sm">
             <button class="btn btn-danger btn-fab m-b-5 pull-right" data-toggle="modal" data-target="#staticpageDeleteModal"> <i class="material-icons md-18">delete</i></button>
     </div>
     <!-- /.row -->
-    <hr style="margin-top: 0px;">
-
+    <hr>
     <div class="row">
         <div class="col-lg-12">
             <flash-message duration="5000" show-close="true" on-dismiss="myCallback(flash)" ></flash-message>
-            <div class="panel panel-default">
+            <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <h4 class="panel-title">{{staticpageData.title}} Details</h4>
+                    <h4 class="panel-title">Edit Page</h4>
                 </div>
                 <div class="panel-body">
                     <div class="row">
@@ -46,10 +45,11 @@
                                 <div class="form-group">
                                     <label>Content:</label>
                                     <summernote ng-model="staticpageData.content" height="300"></summernote> 
-                                </div> 
-
-                                <button type="submit" class="btn btn-raised btn-primary" ng-disabled="updateStaticPageForm.$invalid">Submit Button</button>
-                                <button type="reset" class="btn btn-raised btn-default">Reset Button</button>
+                                </div>
+                                <div class="pull-right">
+                                    <button type="submit" class="btn btn-raised btn-primary" ng-disabled="updateStaticPageForm.$invalid">Update</button>
+                                    <a href="#/staticpage" class="btn btn-raised btn-default">Cancel</a>
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -73,7 +73,7 @@
                 <p>Are you sure you want to delete Static Page "{{staticpageData.title}}"</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-raised btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-raised btn-default" data-dismiss="modal">Cancel</button>
                 <button type="button" ng-click="deleteStaticpage(staticpageData.id)" class="btn btn-raised btn-danger">Delete Static Page</button>
             </div>
             </div><!-- /.modal-content -->
