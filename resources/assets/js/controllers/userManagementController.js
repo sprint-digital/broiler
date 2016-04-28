@@ -6,6 +6,8 @@ function listUserManagementControllerFnc($scope, $location, $compile, DTOptionsB
     $scope.deleteUserData;
     $scope.openDeleteModal = openDeleteModal;
     $scope.msgShow;
+    $scope.statusAction = '';
+    $scope.btnType = 'danger';
 
     userManagementModel.getUserList().success(function(response) {
         if (response.accessDenied == 'true') {
@@ -39,6 +41,12 @@ function listUserManagementControllerFnc($scope, $location, $compile, DTOptionsB
         userManagementModel.getUser(id).success(function(response) {
             $scope.deleteID = id;
             $scope.deleteUserData = response.userData;
+            $scope.statusAction = 'Deactivate';
+            $scope.btnType = 'danger';
+            if (response.userData.active == '0'){ 
+                $scope.statusAction = 'Activate'; 
+                $scope.btnType = 'primary';
+            }
         });
     }
     function createdRow(row, data, dataIndex) {
@@ -51,8 +59,9 @@ function listUserManagementControllerFnc($scope, $location, $compile, DTOptionsB
     }
     function actionsHtml(data, type, full, meta) {
         var string = '';
-        string = '<a class="btn btn-primary btn-fab" href="#/user-management/'+data.id+'"><i class="material-icons md-24">mode_edit</i></a>&nbsp;' +
-        '<button class="btn btn-danger btn-fab ';
+        string = '<a class="btn btn-primary btn-fab ';
+        if (data.active == 0) string += 'inactiveUser';
+        string += '" href="#/user-management/'+data.id+'"><i class="material-icons md-24">mode_edit</i></a>&nbsp; <button class="btn btn-danger btn-fab ';
         if (data.active == 0) string += 'inactiveUser';
         string += '" data-toggle="modal" data-target="#userManagementDeleteModal" ng-click="openDeleteModal('+data.id+')">' +
         '   <i class="material-icons md-24">account_circle</i>' +
@@ -67,30 +76,28 @@ myApp.controller('singleUserManagementController', ['$scope', '$routeParams','$l
     $scope.userData;
     $scope.roles;
     $scope.selectedRole;
+    $scope.panel = 'default';
 
     userManagementModel.getUser($scope.pageid).success(function(response) {
         if (response.accessDenied == 'true') {
             $location.path('/dashboard');
             Flash.create(response.msgType, response.msg);
         }
-        //$scope.userData = response;
         $scope.userData = response.userData;
         $scope.roles = response.roles;
+        $scope.statuses = [{status:"0",label:"Inactive"},{status:"1",label:"Active"}];
         $scope.selectedRole = {'id': response.userData.role_id, 'display_name': response.userData.role_display_name};
+        $scope.selectedStatus = {'status': response.userData.active};
+        if (response.userData.active == '1') $scope.panel = 'primary';
     });
 
     // === Functions === //
     angular.extend($scope, {
         updateUserData: function() {
-            userManagementModel.updateUser($scope.userData, $scope.selectedRole).success(function(response) {
+            userManagementModel.updateUser($scope.userData, $scope.selectedRole, $scope.selectedStatus).success(function(response) {
                 $scope.userData = response.userData;
-                Flash.create(response.msgType, response.msg);
-            });
-        },
-        deleteUser: function(id){
-            userManagementModel.deleteUser(id).success(function(response) {
-                $('.modal-backdrop').hide();
-                $location.path( "/user-management" );
+                $scope.panel = 'default';
+                if (response.userData.active == '1') $scope.panel = 'primary';
                 Flash.create(response.msgType, response.msg);
             });
         }

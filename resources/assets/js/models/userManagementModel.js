@@ -6,11 +6,11 @@ myApp.factory('userManagementModel', ['$http', function($http) {
         getUser: function(userId) {
             return $http.get(baseUrl + 'portal/user-management/' + userId );
         },
-        updateUser: function(userData, selectedRole) {
+        updateUser: function(userData, selectedRole, selectedStatus) {
             return $http({
                 method  : 'PUT',
                 url     : baseUrl + 'portal/user-management/'+userData.id,
-                data    : {'userData': userData, 'selectedRole': selectedRole},  // pass in data as strings
+                data    : {'userData': userData, 'selectedRole': selectedRole, 'selectedStatus': selectedStatus},  // pass in data as strings
                 headers: {'Content-Type': 'application/json'},
                 });
         },
