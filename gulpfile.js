@@ -21,13 +21,15 @@ elixir(function(mix) {
     	'controllers/userController.js',
         'controllers/settingController.js',
         'controllers/blogController.js',
-        'controllers/staticpageController.js'
+        'controllers/staticpageController.js',
+        'controllers/userManagementController.js'
 	], 'public/js/controllers.js');
     mix.scripts([
         'models/dashboardModel.js',
     	'models/userModel.js',
         'models/settingModel.js',
         'models/blogModel.js',
-        'models/staticpageModel.js'
+        'models/staticpageModel.js',
+        'models/userManagementModel.js'
 	], 'public/js/models.js');
 });

@@ -61,6 +61,9 @@ class UserController extends Controller
      */
     public function show($id=null)
     {
+        if (!$this->checkUser()){
+            return Response::json(array('accessDenied'=>'true','msgType'=>'danger','msg'=>'Sorry, you do not have permission. Please contact the website administrator or owner to resolve this issue.'));
+        };
         $user = Auth::user();
         return Response::json($user);
     }
@@ -98,4 +101,18 @@ class UserController extends Controller
     {
         //
     }
+    /**
+     * Middleware function 
+     *
+     * @param  none
+     * @return Boolean True or False
+     */
+    public function checkUser()
+    {
+        $user = Auth::user();
+        if (!$user->hasRole(['owner', 'admin'])){
+            return false;
+        }
+        return true;
+    } 
 }

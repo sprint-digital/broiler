@@ -1,8 +1,12 @@
-myApp.controller('userController', ['$scope', '$location', 'userModel',
-    function($scope, $location, userModel) {
+myApp.controller('userController', ['$scope', '$location', 'userModel', 'Flash',
+    function($scope, $location, userModel, Flash) {
         $scope.userData;
         /*Getting User Profile*/
         userModel.getUser().success(function(response) {
+            if (response.accessDenied == 'true') {
+                $location.path('/dashboard');
+                Flash.create(response.msgType, response.msg);
+            }
             $scope.userData = response;
         });
 

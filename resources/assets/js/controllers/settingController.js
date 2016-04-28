@@ -14,6 +14,10 @@ myApp.controller('settingController', ['$scope', '$location', 'settingModel','Fl
 
         /*Getting all additional Settings*/
         settingModel.getSettings().success(function(response) {
+            if (response.accessDenied == 'true') {
+                $location.path('/dashboard');
+                Flash.create(response.msgType, response.msg);
+            }
             $scope.settingDatas = response;
         });
 

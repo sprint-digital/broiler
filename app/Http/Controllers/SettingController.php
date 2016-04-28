@@ -17,6 +17,9 @@ class SettingController extends Controller
      */
     public function index()
     {
+        if (!$this->checkUser()){
+            return Response::json(array('accessDenied'=>'true','msgType'=>'danger','msg'=>'Sorry, you do not have permission. Please contact the website administrator or owner to resolve this issue.'));
+        };
         $user = Auth::user();
         $settingData = Setting::get();
         return Response::json($settingData);
@@ -91,4 +94,18 @@ class SettingController extends Controller
         $settingDatas = Setting::get()->toArray();
         return Response::json(array('settingDatas'=>$settingDatas,'msgType'=>'danger','msg'=>'Setting has been successfully deleted'));
     }
+    /**
+     * Middleware function 
+     *
+     * @param  none
+     * @return Boolean True or False
+     */
+    public function checkUser()
+    {
+        $user = Auth::user();
+        if (!$user->hasRole(['owner', 'admin'])){
+            return false;
+        }
+        return true;
+    } 
 }

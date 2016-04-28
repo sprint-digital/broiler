@@ -30,7 +30,15 @@ myApp.config(['$routeProvider', '$locationProvider',
         $routeProvider.when('/blog/:id', {
             templateUrl: 'backend/blog/blog-single.html'
         });
-
+        $routeProvider.when('/user-management', {
+            templateUrl: 'backend/user-management/user-management-list.html'
+        });
+        $routeProvider.when('/user-management/create', {
+            templateUrl: 'backend/user-management/user-management-create.html'
+        });
+        $routeProvider.when('/user-management/:id', {
+            templateUrl: 'backend/user-management/user-management-single.html'
+        });
         $routeProvider.otherwise('/dashboard');
 	}
 ]);

@@ -28,6 +28,7 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::resource('/portal/staticpage', 'StaticpageController');
     Route::resource('/portal/blog', 'BlogController');
+    Route::resource('/portal/user-management', 'UserManagementController');
 
 });
 // Route::get('/', function () {usu

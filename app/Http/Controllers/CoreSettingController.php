@@ -17,6 +17,9 @@ class CoreSettingController extends Controller
      */
     public function index()
     {
+        if (!$this->checkUser()){
+            return Response::json(array('accessDenied'=>'true','msgType'=>'danger','msg'=>'Sorry, you do not have permission. Please contact the website administrator or owner to resolve this issue.'));
+        };
         $user = Auth::user();
         $coreSettingData = CoreSetting::get();
         return Response::json($coreSettingData);
@@ -101,4 +104,18 @@ class CoreSettingController extends Controller
         \Image::make($request->file('file'))->encode('png',80)->save(public_path().'/img/logo.png');
         return Response::json(array('msgType'=>'success','msg'=>'Logo has been successfully Updated'));
     }
+    /**
+     * Middleware function 
+     *
+     * @param  none
+     * @return Boolean True or False
+     */
+    public function checkUser()
+    {
+        $user = Auth::user();
+        if (!$user->hasRole(['owner', 'admin'])){
+            return false;
+        }
+        return true;
+    } 
 }

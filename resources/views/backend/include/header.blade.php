@@ -43,36 +43,38 @@
 </head>
 <body id="app-layout">
     <div id="wrapper">
-@if (Request::path() == 'portal')
-        <!-- Navigation -->
-        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle pull-left" data-toggle="collapse" data-target=".navbar-collapse">
-                    <i class="material-icons md-28">apps</i>
-                </button>
-                <a class="navbar-brand" href="#/dashboard"><img src="{{ url('/img/logo.png') }}" class="navbar-logo"></a>
-                <ul class="nav navbar-top-links navbar-right">
-                    <!-- /.dropdown -->
-                    <li class="dropdown pull-right">
-                        <a class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="material-icons">touch_app</i>  <i class="fa fa-caret-down"></i>
-                        </a>
-                        <ul class="dropdown-menu dropdown-user">
-                            <li><a href="#/profile"><i class="material-icons">person</i> User Profile</a>
-                            </li>
-                            <li><a href="#/setting"><i class="material-icons">settings</i> Settings</a>
-                            </li>
-                            <li class="divider"></li>
-                            <li><a href="{{ url('/portal/logout') }}"><i class="material-icons">exit_to_app</i> Logout</a>
-                            </li>
-                        </ul>
-                        <!-- /.dropdown-user -->
-                    </li>
-                    <!-- /.dropdown -->
-                </ul>
-                <!-- /.navbar-top-links -->
-            </div>
-            <!-- /.navbar-header -->
+        @if (Request::path() == 'portal')
+            <!-- Navigation -->
+            <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle pull-left" data-toggle="collapse" data-target=".navbar-collapse">
+                        <i class="material-icons md-28">apps</i>
+                    </button>
+                    <a class="navbar-brand" href="#/dashboard"><img src="{{ url('/img/logo.png') }}" class="navbar-logo"></a>
+                    <ul class="nav navbar-top-links navbar-right">
+                        <!-- /.dropdown -->
+                        <li class="dropdown pull-right">
+                            <a class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="material-icons">touch_app</i>  <i class="fa fa-caret-down"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-user">
+                                @role('admin','owner')
+                                <li><a href="#/profile"><i class="material-icons">person</i> User Profile</a>
+                                </li>
+                                <li><a href="#/setting"><i class="material-icons">settings</i> Settings</a>
+                                </li>
+                                <li class="divider"></li>
+                                @endrole
+                                <li><a href="{{ url('/portal/logout') }}"><i class="material-icons">exit_to_app</i> Logout</a>
+                                </li>
+                            </ul>
+                            <!-- /.dropdown-user -->
+                        </li>
+                        <!-- /.dropdown -->
+                    </ul>
+                    <!-- /.navbar-top-links -->
+                </div>
+                <!-- /.navbar-header -->
 
 
-@endif
+        @endif

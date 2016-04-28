@@ -17,6 +17,11 @@
                 <li>
                     <a href="#/blog"><i class="material-icons">forum</i> Blog Posts</a>
                 </li>
+                @role('admin','owner')
+                <li>
+                    <a href="#/user-management"><i class="material-icons">supervisor_account</i> User Management</a>
+                </li>
+                @endrole
                 <!-- account and settings only accessible from top nav right dropdown menu
                 <li class="">
                     <a href="#"><i class="fa fa-user fa-fw"></i> Profile<span class="fa arrow"></span></a>
