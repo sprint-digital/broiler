@@ -48,12 +48,7 @@ class UserManagementController extends Controller
      */
     public function store(Request $request)
     {
-        $input = $request->all();
-        $input['sortid'] = User::max('sortid')+1;
-        $input['slug'] = strtolower(preg_replace('/\s*/', '',  $input['title']));
-        $userData = User::create($input);
-        $userData->toArray();
-        return Response::json(array('userData'=>$userData,'msgType'=>'success','msg'=>'Static Page has been successfully created'));
+
     }
     /**
      * Display the specified resource.

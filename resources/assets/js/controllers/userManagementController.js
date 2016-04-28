@@ -5,7 +5,6 @@ function listUserManagementControllerFnc($scope, $location, $compile, DTOptionsB
     $scope.deleteID;
     $scope.deleteUserData;
     $scope.openDeleteModal = openDeleteModal;
-    $scope.msgShow;
     $scope.statusAction = '';
     $scope.btnType = 'danger';
 
@@ -35,7 +34,6 @@ function listUserManagementControllerFnc($scope, $location, $compile, DTOptionsB
             Flash.create(response.msgType, response.msg);
         });
     }
-
 
     function openDeleteModal(id) {
         userManagementModel.getUser(id).success(function(response) {
@@ -103,19 +101,3 @@ myApp.controller('singleUserManagementController', ['$scope', '$routeParams','$l
         }
     });
 }]);
-
-// myApp.controller('createUserManagementController', ['$scope', '$routeParams','$location','userManagementModel','Flash',
-//   function($scope, $routeParams, $location, userManagementModel,Flash) {
-//     $scope.userData = {'id':'','name':'','email':'','role':''};
-//     // === Functions === //
-//     angular.extend($scope, {
-//         createUserManagementData: function(){
-//             if ($scope.createStaticPageForm.$valid) {
-//                 userManagementModel.createUser($scope.staticpageData).success(function(response) {
-//                     $location.path('/user-management/'+response.userData.id);
-//                     Flash.create(response.msgType, response.msg);
-//                 });
-//             }
-//         }
-//     });
-// }]);
