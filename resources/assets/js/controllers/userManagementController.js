@@ -5,8 +5,6 @@ function listUserManagementControllerFnc($scope, $location, $compile, DTOptionsB
     $scope.deleteID;
     $scope.deleteUserData;
     $scope.openDeleteModal = openDeleteModal;
-    $scope.msg;
-    $scope.msgType;
     $scope.msgShow;
 
     userManagementModel.getUserList().success(function(response) {
@@ -23,6 +21,7 @@ function listUserManagementControllerFnc($scope, $location, $compile, DTOptionsB
         DTColumnBuilder.newColumn('id').withTitle('ID'),
         DTColumnBuilder.newColumn('name').withTitle('Name'),
         DTColumnBuilder.newColumn('display_name').withTitle('Role'),
+        DTColumnBuilder.newColumn('active').withTitle('Status').renderWith(statusHtml),
         DTColumnBuilder.newColumn(null).withTitle('Actions').notSortable().renderWith(actionsHtml).withClass('text-center btn-group-sm')
     ];
     $scope.dtInstance = {};
@@ -30,8 +29,7 @@ function listUserManagementControllerFnc($scope, $location, $compile, DTOptionsB
         userManagementModel.deleteUser(id).success(function(response) {
             $('#userManagementDatatable').DataTable().ajax.reload();//This part is stupid
             $('#userManagementDeleteModal').modal('hide');
-            $scope.deleteUserData = response.userData;
-            $scope.msg = response.msg;
+            $scope.deleteUserData = response.usersData;
             Flash.create(response.msgType, response.msg);
         });
     }
@@ -47,11 +45,19 @@ function listUserManagementControllerFnc($scope, $location, $compile, DTOptionsB
         // Recompiling so we can bind Angular directive to the DT
         $compile(angular.element(row).contents())($scope);
     }
+    function statusHtml(data, type, full, meta) {
+        if (data == '1') return 'Active';
+        return 'Inactive';
+    }
     function actionsHtml(data, type, full, meta) {
-            return '<a class="btn btn-primary btn-fab" href="#/user-management/'+data.id+'"><i class="material-icons md-24">mode_edit</i></a>&nbsp;' +
-            '<button class="btn btn-danger btn-fab" data-toggle="modal" data-target="#userManagementDeleteModal" ng-click="openDeleteModal('+data.id+')">' +
-            '   <i class="material-icons md-24">delete</i>' +
-            '</button>';
+        var string = '';
+        string = '<a class="btn btn-primary btn-fab" href="#/user-management/'+data.id+'"><i class="material-icons md-24">mode_edit</i></a>&nbsp;' +
+        '<button class="btn btn-danger btn-fab ';
+        if (data.active == 0) string += 'inactiveUser';
+        string += '" data-toggle="modal" data-target="#userManagementDeleteModal" ng-click="openDeleteModal('+data.id+')">' +
+        '   <i class="material-icons md-24">account_circle</i>' +
+        '</button>';
+        return string;
     }
 }
 

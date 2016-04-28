@@ -28,7 +28,7 @@ class UserManagementController extends Controller
             return Response::json(array('accessDenied'=>'true','msgType'=>'danger','msg'=>'Sorry, you do not have permission. Please contact the website administrator or owner to resolve this issue.'));
         };
         // Grabs All users' data with their roles
-        $usersData = DB::select( DB::raw("SELECT users.name, users.email, users.id, roles.display_name FROM users, roles, role_user WHERE users.id = role_user.user_id AND roles.id = role_user.role_id") );
+        $usersData = DB::select( DB::raw("SELECT users.name, users.active, users.email, users.id, roles.display_name FROM users, roles, role_user WHERE users.id = role_user.user_id AND roles.id = role_user.role_id") );
         return Response::json($usersData);
     }
     /**
@@ -104,9 +104,13 @@ class UserManagementController extends Controller
      */
     public function destroy($id)
     {
-        User::find($id)->delete();
-        $staticpagesData = User::get()->toArray();
-        return Response::json(array('staticpagesData'=>$staticpagesData,'msgType'=>'danger','msg'=>'Static Page has been successfully deleted'));
+        if (User::find($id)->active == 1){
+            User::find($id)->update(['active' => 0]);
+        }else{
+            User::find($id)->update(['active' => 1]);
+        }
+        $usersData = User::get()->toArray();
+        return Response::json(array('usersData'=>$usersData,'msgType'=>'danger','msg'=>'User has been successfully deactivated'));
     }
     /**
      * Middleware function 
@@ -117,7 +121,7 @@ class UserManagementController extends Controller
     public function checkUser()
     {
         $user = Auth::user();
-        if (!$user->hasRole(['owner', 'admin', 'staff'])){
+        if (!$user->hasRole(['owner', 'admin'])){
             return false;
         }
         return true;

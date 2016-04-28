@@ -284,3 +284,11 @@ body {
   .material-icons.md-28 { font-size: 28px; }
   .material-icons.md-36 { font-size: 36px; }
   .material-icons.md-48 { font-size: 48px; }
+
+// Nhi's Extra scss
+.inactiveUser {
+  opacity: 0.4 ;
+  &:hover {
+    opacity: 1 !important;
+  }
+}
