@@ -11,7 +11,11 @@
 |
 */
 
+
 Route::group(['middleware' => 'web'], function () {
+    //FrontEnd Routes
+    Route::get('/', 'FrontendController@index');
+
     Route::auth('portal');
     Route::get('/portal', 'HomeController@index');
     //Route::get('/portal/getDashboardData', 'DashboardController@index');
@@ -24,8 +28,6 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('/portal/coreSetting/updateLogo', 'CoreSettingController@updateLogo');
     Route::put('/portal/coreSetting', 'CoreSettingController@update');
     Route::resource('/portal/coreSetting', 'CoreSettingController');
-
-
     Route::resource('/portal/staticpage', 'StaticpageController');
     Route::resource('/portal/blog', 'BlogController');
     Route::resource('/portal/user-management', 'UserManagementController');

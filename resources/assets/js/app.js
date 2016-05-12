@@ -42,3 +42,16 @@ myApp.config(['$routeProvider', '$locationProvider',
         $routeProvider.otherwise('/dashboard');
 	}
 ]);
+
+
+var myApp = angular.module('frontendApp', ['ngRoute','ngCookies' ,'ngResource', 'summernote', 'ngFlash', 'ngFileUpload']);
+
+myApp.config(['$routeProvider', '$locationProvider',
+    function($routeProvider, $locationProvider) {
+        $routeProvider.when('/', {
+            templateUrl: 'frontend/index.html',
+        });
+
+        $routeProvider.otherwise('/');
+    }
+]);
